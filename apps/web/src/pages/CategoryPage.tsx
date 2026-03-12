@@ -4,8 +4,10 @@ import ProductList from '../components/ProductList';
 import Header from "../components/Header";
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist";
+import { useProducts } from "../hooks/useProducts";
 
 export default function CategoryPage() {
+    const { products, removeProduct } = useProducts();
     const { productsInBasket, addToCart, removeFromCart } = useCart();
     const { productsInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -21,7 +23,7 @@ export default function CategoryPage() {
                     {/* Products Grid - 3 columns on large screens */}
                     <div className="lg:col-span-3">
                         <h2 className="text-2xl font-bold mb-6">Products</h2>
-                        <ProductList addToCart={addToCart} addToWishlist={addToWishlist} productsInWishlist={productsInWishlist}/>
+                        <ProductList products={products} addToCart={addToCart} addToWishlist={addToWishlist} removeProduct={removeProduct} productsInWishlist={productsInWishlist}/>
                     </div>
 
                     {/* Sidebar - Cart and Wishlist */}

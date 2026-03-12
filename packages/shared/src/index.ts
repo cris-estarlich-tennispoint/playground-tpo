@@ -29,17 +29,6 @@ export const WishlistItemSchema = z.object({
 })
 export type WishlistItem = z.infer<typeof WishlistItemSchema>
 
-export const OrderItemSchema = z.object({
-  productId: z.string().uuid(),
-  quantity: z.number().int().positive(),
-  price: z.number().positive(),
-})
-
-export const OrderSchema = z.object({
-  id: z.string().uuid(),
-  userId: z.string().uuid(),
-  total: z.number().positive(),
-  createdAt: z.string(),
-  items: z.array(OrderItemSchema),
-})
-export type Order = z.infer<typeof OrderSchema>
+export * from './contracts/products.contracts'
+export * from './contracts/cart.contracts'
+export * from './contracts/wishlist.contracts'

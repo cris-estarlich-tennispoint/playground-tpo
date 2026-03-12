@@ -7,8 +7,8 @@ import { wishlistController } from './presenters/wishlist.controller'
 const app = new Hono().basePath('/api')
 
 app.use('*', cors())
-app.route('/products', productsController)
-app.route('/basket', cartController)
-app.route('/wishlist', wishlistController)
+app.route('/', productsController)
+app.route('/', cartController)
+app.route('/', wishlistController)
 
 export default { port: 3001, fetch: app.fetch }
